@@ -25,16 +25,10 @@ jobs:
           distribution: 'temurin'
           java-version: 21
 
-      - name: Cache gradle files
-        uses: actions/cache@v4
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-            ./.gradle/loom-cache
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle', '**/gradle.properties', '**/*.accesswidener', 'settings.json') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
+          cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/master' && github.ref != 'refs/heads/dev' }}
 
       - name: Build with gradle
         run: |
@@ -56,6 +50,22 @@ jobs:
         with:
           name: build-artifacts
           path: versions/*/build/libs/
+
+      - name: Collect mod jars
+        run: |
+          shopt -s extglob
+          mkdir mod-jars
+          for jar in versions/*/build/libs/!(*-@(dev|sources|shadow)).jar; do
+              cp -p "$jar" mod-jars/
+          done
+          ls -l mod-jars
+
+      # This is the artifact recommended for users to download
+      - name: Upload mod jars
+        uses: actions/upload-artifact@v4
+        with:
+          name: mod-jars
+          path: mod-jars/*.jar
 
       - name: Publish with gradle
         if: inputs.release || github.ref == 'refs/heads/dev'
