@@ -1,6 +1,3 @@
-<p align="center">
-#<img src="./mod_icon_hires.png" width="200" height="200" alt="Custom Icon">
-</p>
 
 # Custom Icon
 
