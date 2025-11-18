@@ -3,6 +3,8 @@
 
 [![License](https://img.shields.io/github/license/Fallen-Breath/classic-minecraft-icon.svg)](http://www.gnu.org/licenses/lgpl-3.0.html)
 
+This is a Fork/copy from [Classic minecraft icons]([https://pages.github.com/](https://github.com/Fallen-Breath/classic-minecraft-icon))
+
 Here's a simple client-side mod to customize the window icon. Use your own icons or let Minecraft use its defaults!
 
 This mod is client-side only and requires no extra dependency. It supports all Minecraft versions since 1.14 (fabric) or since 1.15 (forge)
