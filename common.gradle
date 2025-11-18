@@ -56,9 +56,9 @@ dependencies {
 	}
 }
 
-String MOD_ICON_PATH = 'assets/classicminecrafticon/mod_icon.png'
-String MIXIN_CONFIG_PATH = 'classic_minecraft_icon.mixins.json'
-String LANG_DIR = 'assets/classicminecrafticon/lang'
+String MOD_ICON_PATH = 'assets/customicon/mod_icon.png'
+String MIXIN_CONFIG_PATH = 'custom_icon.mixins.json'
+String LANG_DIR = 'assets/customicon/lang'
 JavaVersion JAVA_COMPATIBILITY
 if (mcVersion >= 12005 && !(mcVersion < 12100 && mod_brand == 'forge')) {
 	JAVA_COMPATIBILITY = JavaVersion.VERSION_21
@@ -166,6 +166,9 @@ processResources {
 		// forge requires the mod icon file to be at the resource root
 		filesMatching(MOD_ICON_PATH) { f -> f.path = new File(f.path).getName() }
 	}
+
+	// Do not package deprecated default icon assets; only use user-provided config icons
+	exclude 'assets/customicon/icons/**'
 }
 
 // https://github.com/Fallen-Breath/yamlang
@@ -230,7 +233,7 @@ license {
 	}
 	ext {
 		name = project.mod_name
-		author = 'Fallen_Breath'
+		author = 'niklas2233'
 		year = Calendar.getInstance().get(Calendar.YEAR).toString()
 	}
 }

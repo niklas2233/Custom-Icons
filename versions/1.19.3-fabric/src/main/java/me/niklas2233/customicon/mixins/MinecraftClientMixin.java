@@ -1,26 +1,26 @@
 /*
- * This file is part of the Classic Minecraft Icon project, licensed under the
+ * This file is part of the Custom Icon project, licensed under the
  * GNU Lesser General Public License v3.0
  *
- * Copyright (C) 2023  Fallen_Breath and contributors
+ * Copyright (C) 2025  niklas2233 and contributors
  *
- * Classic Minecraft Icon is free software: you can redistribute it and/or modify
+ * Custom Icon is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Classic Minecraft Icon is distributed in the hope that it will be useful,
+ * Custom Icon is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with Classic Minecraft Icon.  If not, see <https://www.gnu.org/licenses/>.
+ * along with Custom Icon.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package me.fallenbreath.classicminecrafticon.mixins;
+package me.niklas2233.customicon.mixins;
 
-import me.fallenbreath.classicminecrafticon.ClassicMinecraftIconStorage;
+import me.niklas2233.customicon.CustomIconStorage;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.resource.InputSupplier;
 import org.spongepowered.asm.mixin.Mixin;
@@ -48,7 +48,7 @@ public abstract class MinecraftClientMixin
 	)
 	private InputSupplier<InputStream> bringTheClassicCraftingTableIconBack_general16x(InputSupplier<InputStream> icon16)
 	{
-		return ClassicMinecraftIconStorage.getResource("icon_16x16.png");
+		return CustomIconStorage.hasResource("icon_16x16.png") ? CustomIconStorage.getResource("icon_16x16.png") : icon16;
 	}
 
 	@ModifyArg(
@@ -61,7 +61,7 @@ public abstract class MinecraftClientMixin
 	)
 	private InputSupplier<InputStream> bringTheClassicCraftingTableIconBack_general32x(InputSupplier<InputStream> icon32)
 	{
-		return ClassicMinecraftIconStorage.getResource("icon_32x32.png");
+		return CustomIconStorage.hasResource("icon_32x32.png") ? CustomIconStorage.getResource("icon_32x32.png") : icon32;
 	}
 
 	@ModifyArg(
@@ -73,6 +73,6 @@ public abstract class MinecraftClientMixin
 	)
 	private InputSupplier<InputStream> bringTheClassicCraftingTableIconBack_mac(InputSupplier<InputStream> iconMac)
 	{
-		return ClassicMinecraftIconStorage.getResource("minecraft.icns");
+		return CustomIconStorage.hasMacIcon() ? CustomIconStorage.getResource("minecraft.icns") : iconMac;
 	}
 }

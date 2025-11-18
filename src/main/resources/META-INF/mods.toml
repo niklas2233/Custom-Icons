@@ -8,9 +8,9 @@ modId = "${id}"
 version = "${version}"
 displayName = "${name}"
 displayURL = "https://github.com/Fallen-Breath/classic-minecraft-icon"
-authors = "Fallen_Breath"
+authors = "niklas2233"
 description = '''
-Bring back the classic crafting table window icon of Minecraft
+Customize the Minecraft window icon with your own custom icons
 '''
 logoFile = "mod_icon.png"
 

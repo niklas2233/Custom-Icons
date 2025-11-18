@@ -6,23 +6,23 @@
   "name": "${name}",
   "description": "Bring back the classic crafting table window icon of Minecraft",
   "authors": [
-    "Fallen_Breath"
+    "niklas2233"
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/classic-minecraft-icon",
     "sources": "https://github.com/Fallen-Breath/classic-minecraft-icon"
   },
 
-  "icon": "assets/classicminecrafticon/mod_icon.png",
+  "icon": "assets/customicon/mod_icon.png",
 
   "environment": "client",
   "entrypoints": {
     "main": [
-      "me.fallenbreath.classicminecrafticon.ClassicMinecraftIconMod"
+      "me.niklas2233.customicon.CustomIconMod"
     ]
   },
   "mixins": [
-    "classic_minecraft_icon.mixins.json"
+    "custom_icon.mixins.json"
   ],
 
   "depends": {

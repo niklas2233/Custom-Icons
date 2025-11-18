@@ -1,26 +1,26 @@
 /*
- * This file is part of the Classic Minecraft Icon project, licensed under the
+ * This file is part of the Custom Icon project, licensed under the
  * GNU Lesser General Public License v3.0
  *
- * Copyright (C) 2023  Fallen_Breath and contributors
+ * Copyright (C) 2025  niklas2233 and contributors
  *
- * Classic Minecraft Icon is free software: you can redistribute it and/or modify
+ * Custom Icon is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Classic Minecraft Icon is distributed in the hope that it will be useful,
+ * Custom Icon is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with Classic Minecraft Icon.  If not, see <https://www.gnu.org/licenses/>.
+ * along with Custom Icon.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package me.fallenbreath.classicminecrafticon.mixins;
+package me.niklas2233.customicon.mixins;
 
-import me.fallenbreath.classicminecrafticon.ClassicMinecraftIconStorage;
+import me.niklas2233.customicon.CustomIconStorage;
 import net.minecraft.client.util.Icons;
 import net.minecraft.resource.InputSupplier;
 import org.spongepowered.asm.mixin.Mixin;
@@ -43,12 +43,22 @@ public abstract class IconsMixin
 	@Inject(method = "getIcons", at = @At("HEAD"), cancellable = true)
 	private void bringTheClassicCraftingTableIconBack_general(CallbackInfoReturnable<List<InputSupplier<InputStream>>> cir)
 	{
-		cir.setReturnValue(ClassicMinecraftIconStorage.getAllPngResources());
+		if (CustomIconStorage.hasCustomPngs())
+		{
+			List<InputSupplier<InputStream>> list = CustomIconStorage.getAllPngResources();
+			if (list != null && !list.isEmpty())
+			{
+				cir.setReturnValue(list);
+			}
+		}
 	}
 
 	@Inject(method = "getMacIcon", at = @At("HEAD"), cancellable = true)
 	private void bringTheClassicCraftingTableIconBack_mac( CallbackInfoReturnable<InputSupplier<InputStream>> cir)
 	{
-		cir.setReturnValue(ClassicMinecraftIconStorage.getResource("minecraft.icns"));
+		if (CustomIconStorage.hasMacIcon())
+		{
+			cir.setReturnValue(CustomIconStorage.getResource("minecraft.icns"));
+		}
 	}
 }

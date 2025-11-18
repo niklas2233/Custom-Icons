@@ -31,6 +31,7 @@ preprocess {
     def mc1214_fabric = createNode('1.21.4-fabric', 1_21_04, '')
     def mc1215_fabric = createNode('1.21.5-fabric', 1_21_05, '')
     def mc1216_fabric = createNode('1.21.6-fabric', 1_21_06, '')
+    def mc1218_fabric = createNode('1.21.8-fabric', 1_21_08, '')
 
 	def mc115_forge  = createNode('1.15.2-forge' , 1_15_02, '')
 	def mc116_forge  = createNode('1.16.5-forge' , 1_16_05, '')
@@ -48,6 +49,7 @@ preprocess {
     def mc1214_forge = createNode('1.21.4-forge', 1_21_04, '')
     def mc1215_forge = createNode('1.21.5-forge', 1_21_05, '')
     def mc1216_forge = createNode('1.21.6-forge', 1_21_06, '')
+    def mc1218_forge = createNode('1.21.8-forge', 1_21_08, '')
 
 	def mc1206_neoforge = createNode('1.20.6-neoforge', 1_20_06, '')
 	def mc1211_neoforge = createNode('1.21.1-neoforge', 1_21_01, '')
@@ -55,6 +57,7 @@ preprocess {
     def mc1214_neoforge = createNode('1.21.4-neoforge', 1_21_04, '')
     def mc1215_neoforge = createNode('1.21.5-neoforge', 1_21_05, '')
     def mc1216_neoforge = createNode('1.21.6-neoforge', 1_21_06, '')
+    def mc1218_neoforge = createNode('1.21.8-neoforge', 1_21_08, '')
 
 	mc114_fabric.link(mc115_fabric, null)
 	mc115_fabric.link(mc116_fabric, null)
@@ -72,6 +75,7 @@ preprocess {
     mc1213_fabric.link(mc1214_fabric , null)
     mc1214_fabric.link(mc1215_fabric , null)
     mc1215_fabric.link(mc1216_fabric , null)
+    mc1216_fabric.link(mc1218_fabric , null)
 
 	mc115_fabric.link(mc115_forge, null)
 	mc116_fabric.link(mc116_forge, null)
@@ -89,6 +93,7 @@ preprocess {
     mc1214_fabric.link(mc1214_forge, null)
     mc1215_fabric.link(mc1215_forge, null)
     mc1216_fabric.link(mc1216_forge, null)
+    mc1218_fabric.link(mc1218_forge, null)
 
     mc1206_fabric.link(mc1206_neoforge, null)
     mc1211_fabric.link(mc1211_neoforge, null)
@@ -96,6 +101,7 @@ preprocess {
     mc1214_fabric.link(mc1214_neoforge, null)
     mc1215_fabric.link(mc1215_neoforge, null)
     mc1216_fabric.link(mc1216_neoforge, null)
+    mc1218_fabric.link(mc1218_neoforge, null)
 }
 
 tasks.register('buildAndGather') {

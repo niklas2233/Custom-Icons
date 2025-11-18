@@ -1,27 +1,49 @@
 <p align="center">
-<img src="./mod_icon_hires.png" width="200" height="200" alt="Classic Minecraft Icon">
+#<img src="./mod_icon_hires.png" width="200" height="200" alt="Custom Icon">
 </p>
 
-# Classic Minecraft Icon
+# Custom Icon
 
 [![License](https://img.shields.io/github/license/Fallen-Breath/classic-minecraft-icon.svg)](http://www.gnu.org/licenses/lgpl-3.0.html)
-[![workflow](https://github.com/Fallen-Breath/classic-minecraft-icon/actions/workflows/gradle.yml/badge.svg)](https://github.com/Fallen-Breath/classic-minecraft-icon/actions/workflows/gradle.yml)
-[![MC Versions](https://cf.way2muchnoise.eu/versions/For%20MC_873049_all.svg)](https://legacy.curseforge.com/minecraft/mc-mods/classic-minecraft-icon)
-[![CurseForge](https://cf.way2muchnoise.eu/full_873049_downloads.svg)](https://legacy.curseforge.com/minecraft/mc-mods/classic-minecraft-icon)
-[![Modrinth](https://img.shields.io/modrinth/dt/NTUQ8Yoi?label=Modrinth%20Downloads)](https://modrinth.com/mod/classic-minecraft-icon)
 
-The icon for the Minecraft game window was changed from a crafting table to a grass / dirt block during the 1.20 release.
-This change affects all Minecraft versions, not just 1.20, which breaks how Minecraft should feel like
-
-Here's a simple client-side mod to revert that change. Yes, the classic Minecraft icon is back!
+Here's a simple client-side mod to customize the window icon. Use your own icons or let Minecraft use its defaults!
 
 This mod is client-side only and requires no extra dependency. It supports all Minecraft versions since 1.14 (fabric) or since 1.15 (forge)
 
-| Icon File          | Source                                                                                                                                 | 
-|--------------------|----------------------------------------------------------------------------------------------------------------------------------------| 
-| `icon_16x16.png`   | Asset [bdf48ef6b5d0d23bbb02e17d04865216179f510a](https://resources.download.minecraft.net/bd/bdf48ef6b5d0d23bbb02e17d04865216179f510a) |
-| `icon_32x32.png`   | Asset [92750c5f93c312ba9ab413d546f32190c56d6f1f](https://resources.download.minecraft.net/92/92750c5f93c312ba9ab413d546f32190c56d6f1f) |
-| `icon_48x48.png`   | Extracted from `minecraft.icns`                                                                                                        |
-| `icon_128x128.png` | Scaled from `icon_256x256.png`                                                                                                         |
-| `icon_256x256.png` | Extracted from `minecraft.icns`                                                                                                        |
-| `minecraft.icns`   | Asset [991b421dfd401f115241601b2b373140a8d78572](https://resources.download.minecraft.net/99/991b421dfd401f115241601b2b373140a8d78572) |
+## Custom Icons
+
+You can now use your own custom icons instead of the default crafting table icons! Simply place your custom icon files in the following directory:
+
+```
+.minecraft/config/custom icons/
+```
+
+The mod will only use icons you place there. If a file is missing, Minecraft will use its own default icons.
+
+### Required Icon Files
+
+To use custom icons, create the following files in the directory above:
+
+- `icon_16x16.png` - 16x16 pixels (Windows/Linux small icon)
+- `icon_32x32.png` - 32x32 pixels (Windows/Linux large icon)
+- `icon_48x48.png` - 48x48 pixels (additional size for better scaling)
+- `icon_128x128.png` - 128x128 pixels (high-res icon)
+- `icon_256x256.png` - 256x256 pixels (very high-res icon)
+- `minecraft.icns` - macOS icon file (optional, for macOS users)
+
+**Note:** You only need to provide the icon files you want to customize. Any missing sizes will fall back to Minecraft's default icons.
+
+### Example
+
+To use a custom 32x32 icon while keeping other sizes default:
+1. Create the directory: `.minecraft/config/custom icons/`
+2. Place your `icon_32x32.png` file in that directory
+3. Launch Minecraft - the mod will use your custom 32x32 icon and default icons for other sizes
+
+Additionally, a default config file is created on first run at:
+
+```
+.minecraft/config/custom_icon.json
+```
+It lists the expected file names and explains where to place your PNGs.
+
